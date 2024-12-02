@@ -2,7 +2,7 @@ import sqlite3
 
 # Connect to the database (creates it if it doesn't exist)
 connections = sqlite3.connect("student.db")
-cursor = connections.cursor()
+Cursor = connections.cursor()
 
 # SQL command to create the table
 table_info = """
@@ -12,18 +12,17 @@ CREATE TABLE IF NOT EXISTS STUDENTS(
         SECTION VARCHAR(25)
 )
 """
-cursor.execute(table_info)
+Cursor.execute(table_info)
 
 # Insert data into the table
-cursor.execute("INSERT INTO STUDENTS VALUES ('Gayaz', 'MBA', 'A')")
-cursor.execute("INSERT INTO STUDENTS VALUES ('Ramana', 'B.sc', 'B')")
-cursor.execute("INSERT INTO STUDENTS VALUES ('Uma', 'B.sc', 'B')")
-cursor.execute("INSERT INTO STUDENTS VALUES ('Reshma', 'B.Tech', 'A')")
+Cursor.execute("INSERT INTO STUDENTS VALUES ('Gayaz', 'MBA', 'A')")
+Cursor.execute("INSERT INTO STUDENTS VALUES ('Ramana', 'Bsc', 'B')")
+Cursor.execute("INSERT INTO STUDENTS VALUES ('Uma', 'Bsc', 'B')")
+Cursor.execute("INSERT INTO STUDENTS VALUES ('Reshma', 'BTech', 'A')")
 
 print("The inserted records are: ")
 
-data = cursor.execute('''select * from student''')
+data = Cursor.execute('''SELECT * FROM STUDENTS;''')
+for row in data :
+    print(row)
 
-# Commit changes and close the connection
-connections.commit()
-connections.close()
